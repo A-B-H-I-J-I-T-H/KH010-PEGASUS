@@ -15,6 +15,8 @@ const Home = () => {
     { name: 'Category A', value: 300 },
     { name: 'Category B', value: 500 },
     { name: 'Category C', value: 200 },
+    { name: 'Category D', value: 400 },
+    { name: 'Category E', value: 600 },
   ];
 
   const dataPieChart = [
@@ -29,8 +31,7 @@ const Home = () => {
     <div style={{ display: 'flex', justifyContent: 'space-around', width:"100%" }}>
       {/* Bar Chart */}
       <div>
-        <h2>Bar Chart</h2>
-        <ResponsiveContainer width={300} height={300}>
+        <ResponsiveContainer width={500} height={300}>
           <BarChart
             data={dataBarChart}
             margin={{
@@ -39,9 +40,9 @@ const Home = () => {
               left: 20,
               bottom: 5,
             }}
+            barCategoryGap={50}
           >
-            <Bar dataKey="value" fill="#8884d8" />
-            <Tooltip />
+            <Bar dataKey="value" fill="#8884d8"/>
             <Legend />
           </BarChart>
         </ResponsiveContainer>
@@ -49,7 +50,6 @@ const Home = () => {
 
       {/* Pie Chart */}
       <div>
-        <h2>Pie Chart</h2>
         <ResponsiveContainer width={300} height={300}>
           <PieChart width={300} height={300}>
             <Pie
