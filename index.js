@@ -13,7 +13,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
+//app.use(express.static(path.join(__dirname, '/css')));
+app.use('/css', express.static(path.join(__dirname, 'css')))
 // Render login page for both GET and POST requests to root
 app.route('/')
   .get(loginController.renderLoginPage)
