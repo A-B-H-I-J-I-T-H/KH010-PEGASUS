@@ -5,7 +5,13 @@ body {
   color: #9e9ea4;
   font-family: 'Montserrat', sans-serif;
 }
-
+h1{
+  font-size: 80px;
+}
+h2{
+  font-size: 40px;
+  padding-left: 100px;
+}
 .icon {
   vertical-align: middle;
   line-height: 1px;
@@ -176,6 +182,11 @@ body {
   gap: 20px;
   margin-top: 60px;
   height: 300px;
+}
+
+.hidden-stroke {
+  stroke: none !important;
+  stroke-width: 0 !important;
 }
 
 /* End Main  */
