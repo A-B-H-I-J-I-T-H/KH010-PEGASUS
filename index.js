@@ -3,9 +3,11 @@ const app = express();
 const session = require('express-session');
 const flash = require('express-flash');
 const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize'); 
 const loginController = require('./controllers/loginController');
 const newPlannerController = require('./controllers/newPlannerController');
 const installmentController = require('./controllers/installmentController');
+const signupController = require('./controllers/signupController');
 const path = require('path');
 const cors = require('cors');
 const cron = require('node-cron');
@@ -29,13 +31,18 @@ app.use('/login', limiter);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(mongoSanitize()); // prevent mongoDB Injection
 // Render login page for both GET and POST requests to root
 app.route('/')
   .get(loginController.renderLoginPage)
   .post(loginController.login);
 
-// Render login page for GET request to /login
+
+app.route('/signup')
+  .get(signupController.renderSignupPage)
+  .post(signupController.signup);
+
+  // Render login page for GET request to /login
 app.get('/login', loginController.renderLoginPage);
 
 // Handle login form submission for POST request to /login
@@ -43,6 +50,7 @@ app.post('/login', loginController.login);
 
 // Create a new planner for the specified user
 app.post('/:user/new_planner', newPlannerController.createNewPlanner);
+
 
 // Schedule a task to run daily
 cron.schedule('0 0 * * *', () => {
