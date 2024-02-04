@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Planner.css'
+import './MonthlyInstallmentPopup.css'; // Import the new CSS file
 
-const MonthlyInstallmentForm = () => {
+const MonthlyInstallmentPopup = ({ onClose }) => {
   const [formData, setFormData] = useState({
     installDate: '',
     topic: '',
@@ -27,9 +27,10 @@ const MonthlyInstallmentForm = () => {
   };
 
   return (
-    <div>
-      <h2>Monthly Installment Form</h2>
-      <form onSubmit={handleFormSubmit}>
+    <div className="popup-container">
+      <div className="popup-content">
+        <h2>Monthly Installment Form</h2>
+        <form onSubmit={handleFormSubmit}>
         <label>
           Install Date:
           <input
@@ -97,9 +98,11 @@ const MonthlyInstallmentForm = () => {
         </label>
         <br />
         <button type="submit">Generate JSON</button>
-      </form>
+        </form>
+        <button onClick={onClose}>Close</button>
+      </div>
     </div>
   );
 };
 
-export default MonthlyInstallmentForm;
+export default MonthlyInstallmentPopup;

@@ -146,9 +146,9 @@ function Home() {
 
       <div className='charts'>
         {selectedSector == null && (
-          <div>
+          <div className='greet'>
             <h1>WELCOME</h1>
-            <h2>ABHIJITH S</h2>
+            <h2>Abhijith S</h2>
           </div>
         )}
 
@@ -187,7 +187,7 @@ function Home() {
               cx='50%'
               cy='50%'
               outerRadius={100}
-              innerRadius={50}
+              innerRadius={60}
               fill='#8884d8'
               onClick={handlePieClick}
               activeIndex={activeIndex}
