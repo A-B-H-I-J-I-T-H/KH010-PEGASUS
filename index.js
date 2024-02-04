@@ -8,6 +8,7 @@ const loginController = require('./controllers/loginController');
 const newPlannerController = require('./controllers/newPlannerController');
 const installmentController = require('./controllers/installmentController');
 const signupController = require('./controllers/signupController');
+const dashboardController = require('./controllers/dashboardController');
 const path = require('path');
 const cors = require('cors');
 const cron = require('node-cron');
@@ -15,7 +16,7 @@ const cron = require('node-cron');
 // prevent brute force attack
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 requests per windowMs
+  max: 10, // limit each IP to 5 requests per windowMs
   message: 'Too many login attempts from this IP, please try again after 15 minutes',
 });
 
@@ -50,6 +51,9 @@ app.post('/login', loginController.login);
 
 // Create a new planner for the specified user
 app.post('/:user/new_planner', newPlannerController.createNewPlanner);
+
+
+app.get('/:username/dashboard', dashboardController.renderDashboardPage);
 
 
 // Schedule a task to run daily
