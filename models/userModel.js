@@ -26,6 +26,8 @@ class UserModel {
 
       // Check if the user exists and if the hashed password matches
       if (user && await bcrypt.compare(sanitizedPassword, user.password)) {
+        console.log(sanitizedPassword);
+        console.log(user);
         return user; // Passwords match
       } else {
         return null; // User not found or passwords do not match
