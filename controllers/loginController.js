@@ -19,9 +19,9 @@ class LoginController {
       }
 
       const user = await userModel.getUserByUsernameAndPassword(username, password);
-
+      console.log(user);
       if (user) {
-        loginView.renderSuccess(user);
+        loginView.renderSuccess(res,user);
       } else {
         req.flash('error', 'Invalid username or password.');
         return res.redirect('/login'); // Redirect to the login page
