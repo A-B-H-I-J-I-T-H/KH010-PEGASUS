@@ -379,7 +379,10 @@
       opacity: 1;
     }
   }
-  
+  .flashMessage{
+    color: red;
+    padding-left: 55px;
+  }
   
   
   
