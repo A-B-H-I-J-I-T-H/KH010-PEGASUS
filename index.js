@@ -9,6 +9,7 @@ const newPlannerController = require('./controllers/newPlannerController');
 const installmentController = require('./controllers/installmentController');
 const signupController = require('./controllers/signupController');
 const dashboardController = require('./controllers/dashboardController');
+const stockController = require('./controllers/stockController');
 const path = require('path');
 const cors = require('cors');
 const cron = require('node-cron');
@@ -55,7 +56,7 @@ app.post('/:user/new_planner', newPlannerController.createNewPlanner);
 
 app.get('/:username/dashboard', dashboardController.renderDashboardPage);
 
-
+app.get('/stock', cors(), stockController.getTopStocks);
 // Schedule a task to run daily
 cron.schedule('0 0 * * *', () => {
   const currentDay = new Date().getDate();
